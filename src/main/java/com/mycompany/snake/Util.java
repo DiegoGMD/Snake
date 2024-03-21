@@ -25,4 +25,8 @@ public class Util {
         g.drawLine(x + 1, y + squareHeight - 1, x + squareWidth - 1, y + squareHeight - 1);
         g.drawLine(x + squareWidth - 1, y + squareHeight - 1, x + squareWidth - 1, y + 1);
     }
+    
+    public static int generateRandom() {
+        return (int) (Math.random() * Board.NUM_ROWS + 1);
+    }
 }

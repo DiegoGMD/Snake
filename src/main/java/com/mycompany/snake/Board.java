@@ -4,9 +4,9 @@
  */
 package com.mycompany.snake;
 
-import com.mycompany.tetris2024.ConfigData;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -27,17 +28,34 @@ public class Board extends javax.swing.JPanel {
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
-                    snake.setDirection(Direction.LEFT);
+                    if (snake.getDirection() != Direction.RIGHT){
+                        snake.setDirection(Direction.LEFT);                        
+                    }
                     break;
                 case KeyEvent.VK_RIGHT:
-                    snake.setDirection(Direction.RIGHT);                    
+                    if (snake.getDirection() != Direction.LEFT){
+                        snake.setDirection(Direction.RIGHT);                        
+                    }
                     break;
                 case KeyEvent.VK_UP:
-                    snake.setDirection(Direction.UP);
+                    if (snake.getDirection() != Direction.DOWN){
+                        snake.setDirection(Direction.UP);                        
+                    }
                     break;
                 case KeyEvent.VK_DOWN:
-                    snake.setDirection(Direction.DOWN);
+                    if (snake.getDirection() != Direction.UP){
+                        snake.setDirection(Direction.DOWN);                        
+                    }
                     break;
+//                case KeyEvent.VK_SPACE:
+//                    if (freeze){
+//                        timer.start();
+//                        freeze = false;
+//                    } else {
+//                        timer.stop();
+//                        freeze = true;
+//                    }
+//                    break;
                 default:
                     break;
             }
@@ -53,14 +71,17 @@ public class Board extends javax.swing.JPanel {
     private Node[][] matrix;
     private Graphics g;
     private Snake snake;
+    private Food food;
     private Timer timer;
+    private boolean freeze;
     
     public Board() {
         initComponents();
         setLayout(new GridLayout(NUM_ROWS, NUM_COLS));
-        setBackground(Color.GREEN);
+        setPreferredSize(new Dimension(NUM_ROWS * 15, NUM_COLS * 15));
         initMatrix();
         snake = new Snake();
+        food = new Food();
         keyAdapter = new MyKeyAdapter();
         addKeyListener(keyAdapter);
         setFocusable(true);
@@ -74,6 +95,7 @@ public class Board extends javax.swing.JPanel {
                 tick();
             }
         });
+        freeze = false;
         timer.start();
     }
     
@@ -96,9 +118,14 @@ public class Board extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
+        paintBackground(g);
         if (snake != null){
             snake.paint(g, getSquareWidth(), getSquareHeight());
         }
+        if (food != null){
+            snake.paint(g, getSquareWidth(), getSquareHeight());
+        }
+        getToolkit().getDefaultToolkit().sync();
     }
     
     public void paintBorder(Graphics g) {
@@ -109,11 +136,28 @@ public class Board extends javax.swing.JPanel {
         g2d.drawRect(0, 0, NUM_COLS * getSquareWidth() - 2, NUM_ROWS * getSquareHeight() - 2);
     }
     
-    public void tick() {
-        snake.moveSnake();
-        repaint();
+    public void paintBackground(Graphics g){
+        for(int row = 0; row < NUM_ROWS; row++){
+            for(int col = 0; col < NUM_COLS; col++){
+                if ((row + col) % 2 == 0){
+                    Util.drawSquare(g, row, col, ConfigData.BACKGROUND1, NUM_ROWS, NUM_COLS);
+                } else {
+                    Util.drawSquare(g, col, row, ConfigData.BACKGROUND2, NUM_ROWS, NUM_COLS);
+                }
+            }
+        }
     }
     
+    public void tick() {
+        if (snake.isGameOver){
+            JOptionPane.showMessageDialog(this, "You LOOSE");
+            timer.stop();
+        } else {
+            snake.moveSnake();
+            repaint();
+        }
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -16,11 +16,14 @@ public class ConfigData {
     public static final Color FOOD_COLOR = Color.BLACK;
     public static final Color SPECIAL_FOOD_COLOR = Color.BLACK;
     
+    public static final Color BACKGROUND1 = new Color(210, 170, 88);
+    public static final Color BACKGROUND2 = new Color(198, 166, 100);
+    
     private static ConfigData configData = new ConfigData();
     private int deltaTime;
     
     private ConfigData(){
-        deltaTime = 100;
+        deltaTime = 250;
     }
 
     public int getDeltaTime() {

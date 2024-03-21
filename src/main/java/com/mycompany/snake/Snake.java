@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Snake extends javax.swing.JPanel {
     private List<Node> body;
     private Direction direction;
     private int nodesToGrow;
+    public boolean isGameOver;
 
     public Snake() {
         body = new ArrayList<Node>();
@@ -29,6 +31,7 @@ public class Snake extends javax.swing.JPanel {
         body.add(new Node(Board.NUM_ROWS / 2, Board.NUM_COLS / 2 - 3));
         direction = Direction.RIGHT;
         nodesToGrow = 0;
+        isGameOver = false;
     }
 
     public void paint(Graphics g, int squareWidth, int squareHeight) {
@@ -36,10 +39,10 @@ public class Snake extends javax.swing.JPanel {
         Color color;
         for (Node node : body) {
             if (firstNode) {
-                color = Color.RED;
+                color = new Color(171, 123, 89);
                 firstNode = false;
             } else {
-                color = Color.YELLOW;
+                color = new Color(181, 121, 79);
             }
             Util.drawSquare(g, node.getRow(), node.getCol(), color, squareWidth, squareHeight);
         }
@@ -57,21 +60,30 @@ public class Snake extends javax.swing.JPanel {
             case UP:
                 if(canMove (row - 1, col)){
                     body.add(0, new Node(row - 1, col));
+                } else {
+                    isGameOver = true;
                 }
                 break;
             case DOWN:
                 if(canMove (row + 1, col)){
                     body.add(0, new Node(row + 1, col));
+                } else {
+                    isGameOver = true;
                 }
                 break;
             case LEFT:
                 if(canMove (row, col - 1)){
                     body.add(0, new Node(row, col - 1));
+                } else {
+                    isGameOver = true;
                 }
                 break;
             case RIGHT:
                 if(canMove (row, col + 1)){
                     body.add(0, new Node(row, col + 1));
+                }
+                else {
+                    isGameOver = true;
                 }
                 break;
         }
