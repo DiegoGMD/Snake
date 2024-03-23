@@ -52,6 +52,10 @@ public class Snake extends javax.swing.JPanel {
         return body.get(0);
     }
     
+    public Node getTail() {
+        return body.get(body.size() - 1);
+    }
+    
     public void moveSnake() {
         Node head = getHead();
         int row = head.getRow();
@@ -89,6 +93,8 @@ public class Snake extends javax.swing.JPanel {
         }
         if (nodesToGrow == 0){
             body.remove(body.size() - 1);
+        } else {
+            nodesToGrow -= 1;
         }
     }
     
