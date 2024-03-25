@@ -47,15 +47,15 @@ public class Board extends javax.swing.JPanel {
                         snake.setDirection(Direction.DOWN);                        
                     }
                     break;
-//                case KeyEvent.VK_SPACE:
-//                    if (freeze){
-//                        timer.start();
-//                        freeze = false;
-//                    } else {
-//                        timer.stop();
-//                        freeze = true;
-//                    }
-//                    break;
+                case KeyEvent.VK_SPACE:
+                    if (freeze){
+                        timer.start();
+                        freeze = false;
+                    } else {
+                        timer.stop();
+                        freeze = true;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -149,7 +149,7 @@ public class Board extends javax.swing.JPanel {
     }
     
     public void tick() {
-        if (snake.isGameOver){
+        if (snake.isGameOver()){
             JOptionPane.showMessageDialog(this, "You LOOSE");
             timer.stop();
         } else {
@@ -163,7 +163,7 @@ public class Board extends javax.swing.JPanel {
         if (snake.getHead().getRow() == food.getFood().getRow() 
                 && snake.getHead().getCol()== food.getFood().getCol()){
             food = new Food();
-            snake.nodesToGrow = 1;
+            snake.setNodesToGrow(1);
         }
     }
     

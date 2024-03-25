@@ -13,7 +13,6 @@ import java.util.Random;
  * @author gmd
  */
 public class Food {
-
     private Node food;
 
     public Food() {

@@ -20,8 +20,8 @@ public class Snake extends javax.swing.JPanel {
 
     private List<Node> body;
     private Direction direction;
-    public int nodesToGrow;
-    public boolean isGameOver;
+    private int nodesToGrow;
+    private boolean gameOver;
 
     public Snake() {
         body = new ArrayList<Node>();
@@ -31,7 +31,7 @@ public class Snake extends javax.swing.JPanel {
         body.add(new Node(Board.NUM_ROWS / 2, Board.NUM_COLS / 2 - 3));
         direction = Direction.RIGHT;
         nodesToGrow = 0;
-        isGameOver = false;
+        gameOver = false;
     }
 
     public void paint(Graphics g, int squareWidth, int squareHeight) {
@@ -55,7 +55,23 @@ public class Snake extends javax.swing.JPanel {
     public Node getTail() {
         return body.get(body.size() - 1);
     }
-    
+
+    public int getNodesToGrow() {
+        return nodesToGrow;
+    }
+
+    public void setNodesToGrow(int nodesToGrow) {
+        this.nodesToGrow = nodesToGrow;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean isGameOver) {
+        this.gameOver = isGameOver;
+    }
+
     public void moveSnake() {
         Node head = getHead();
         int row = head.getRow();
@@ -65,21 +81,21 @@ public class Snake extends javax.swing.JPanel {
                 if(canMove (row - 1, col)){
                     body.add(0, new Node(row - 1, col));
                 } else {
-                    isGameOver = true;
+                    gameOver = true;
                 }
                 break;
             case DOWN:
                 if(canMove (row + 1, col)){
                     body.add(0, new Node(row + 1, col));
                 } else {
-                    isGameOver = true;
+                    gameOver = true;
                 }
                 break;
             case LEFT:
                 if(canMove (row, col - 1)){
                     body.add(0, new Node(row, col - 1));
                 } else {
-                    isGameOver = true;
+                    gameOver = true;
                 }
                 break;
             case RIGHT:
@@ -87,7 +103,7 @@ public class Snake extends javax.swing.JPanel {
                     body.add(0, new Node(row, col + 1));
                 }
                 else {
-                    isGameOver = true;
+                    gameOver = true;
                 }
                 break;
         }
