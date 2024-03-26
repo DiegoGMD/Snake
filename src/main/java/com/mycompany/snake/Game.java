@@ -44,7 +44,7 @@ public class Game extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
 
         jToolBar1.setBackground(new java.awt.Color(0, 0, 0));
-        jToolBar1.setForeground(new java.awt.Color(0, 0, 0));
+        jToolBar1.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
         jToolBar1.setBorderPainted(false);
         jToolBar1.setMinimumSize(new java.awt.Dimension(120, 34));
@@ -58,14 +58,14 @@ public class Game extends javax.swing.JFrame {
         scoreBoard1.setPreferredSize(new java.awt.Dimension(200, 30));
         jToolBar1.add(scoreBoard1);
 
-        jButtonReset.setText("R");
+        jButtonReset.setIcon(new javax.swing.ImageIcon("/home/gmd/NetBeansProjects/Snake-master/src/main/sources/images/restart.png")); // NOI18N
         jButtonReset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButtonReset.setFocusable(false);
         jButtonReset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonReset.setIconTextGap(0);
         jButtonReset.setMaximumSize(new java.awt.Dimension(25, 25));
         jButtonReset.setMinimumSize(new java.awt.Dimension(25, 25));
         jButtonReset.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButtonReset.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonResetActionPerformed(evt);
