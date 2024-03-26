@@ -89,7 +89,7 @@ public class Board extends javax.swing.JPanel {
                 tick();
             }
         });
-        timer.start();
+        timer.restart();
         timerText.start();
     }
         
