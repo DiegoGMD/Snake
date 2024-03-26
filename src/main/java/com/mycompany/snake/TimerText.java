@@ -62,7 +62,7 @@ public class TimerText extends JTextField {
     }
 
     private void displayTime() {
-        setText("Time:" + (minutes < 10 ? "0" : "") + minutes
+        setText("Time: " + (minutes < 10 ? "0" : "") + minutes
                 + ":" + (seconds < 10 ? "0" : "") + seconds);
     }
 

@@ -137,7 +137,7 @@ public class Board extends javax.swing.JPanel {
     public void tick() {
         if (snake.isGameOver()){
             timerText.stop();
-            JOptionPane.showMessageDialog(this, "You LOOSE");
+            JOptionPane.showMessageDialog(null, "You LOOSE", "GAME OVER", JOptionPane.ERROR_MESSAGE);
             timer.stop();
         } else {
             snake.moveSnake();

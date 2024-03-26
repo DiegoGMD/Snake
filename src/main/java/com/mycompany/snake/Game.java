@@ -15,6 +15,10 @@ public class Game extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         ConfigDialog configDialog = new ConfigDialog(this, true);
         configDialog.setVisible(true);
+        start();
+    }
+    
+    public void start(){
         board1.setTimerText(timerText1);
         board1.setScoreBoard(scoreBoard1);
         board1.initGame();
@@ -33,6 +37,7 @@ public class Game extends javax.swing.JFrame {
         board1 = new com.mycompany.snake.Board();
         jToolBar1 = new javax.swing.JToolBar();
         scoreBoard1 = new com.mycompany.snake.ScoreBoard();
+        jButtonReset = new javax.swing.JButton();
         timerText1 = new com.mycompany.snake.TimerText();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,15 +53,29 @@ public class Game extends javax.swing.JFrame {
 
         scoreBoard1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         scoreBoard1.setText("Score: 0");
-        scoreBoard1.setMinimumSize(new java.awt.Dimension(120, 30));
+        scoreBoard1.setMinimumSize(new java.awt.Dimension(100, 30));
         scoreBoard1.setName(""); // NOI18N
-        scoreBoard1.setPreferredSize(new java.awt.Dimension(220, 30));
+        scoreBoard1.setPreferredSize(new java.awt.Dimension(200, 30));
         jToolBar1.add(scoreBoard1);
 
-        timerText1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jButtonReset.setText("R");
+        jButtonReset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButtonReset.setFocusable(false);
+        jButtonReset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonReset.setMaximumSize(new java.awt.Dimension(25, 25));
+        jButtonReset.setMinimumSize(new java.awt.Dimension(25, 25));
+        jButtonReset.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButtonReset.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonReset);
+
         timerText1.setText("Time: 00:00");
-        timerText1.setMinimumSize(new java.awt.Dimension(120, 30));
-        timerText1.setPreferredSize(new java.awt.Dimension(220, 30));
+        timerText1.setMinimumSize(new java.awt.Dimension(100, 30));
+        timerText1.setPreferredSize(new java.awt.Dimension(200, 30));
         jToolBar1.add(timerText1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -79,6 +98,10 @@ public class Game extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetActionPerformed
+        start();
+    }//GEN-LAST:event_jButtonResetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,6 +140,7 @@ public class Game extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.snake.Board board1;
+    private javax.swing.JButton jButtonReset;
     private javax.swing.JToolBar jToolBar1;
     private com.mycompany.snake.ScoreBoard scoreBoard1;
     private com.mycompany.snake.TimerText timerText1;
