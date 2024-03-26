@@ -23,6 +23,19 @@ import javax.swing.Timer;
  */
 public class Board extends javax.swing.JPanel {
     
+    public static final int NUM_ROWS = 30;
+    public static final int NUM_COLS = 30;
+    private int currentRow;
+    private int currentCol;
+    private MyKeyAdapter keyAdapter;
+    private Graphics g;
+    private Snake snake;
+    private Food food;
+    private Timer timer;
+    private TimerText timerText;
+    private ScoreBoard scoreBoard;
+    private boolean startGame;
+    
     class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
@@ -47,44 +60,25 @@ public class Board extends javax.swing.JPanel {
                         snake.setDirection(Direction.DOWN);                        
                     }
                     break;
-                case KeyEvent.VK_SPACE:
-                    if (freeze){
-                        timer.start();
-                        freeze = false;
-                    } else {
-                        timer.stop();
-                        freeze = true;
-                    }
-                    break;
                 default:
                     break;
             }
             repaint();
         }
     }
-    
-    public static final int NUM_ROWS = 30;
-    public static final int NUM_COLS = 30;
-    private int currentRow;
-    private int currentCol;
-    private MyKeyAdapter keyAdapter;
-    private Node[][] matrix;
-    private Graphics g;
-    private Snake snake;
-    private Food food;
-    private Timer timer;
-    private boolean freeze;
-    
+        
     public Board() {
         initComponents();
         setLayout(new GridLayout(NUM_ROWS, NUM_COLS));
         setPreferredSize(new Dimension(NUM_ROWS * 15, NUM_COLS * 15));
-        initMatrix();
-        snake = new Snake();
-        food = new Food();
         keyAdapter = new MyKeyAdapter();
         addKeyListener(keyAdapter);
         setFocusable(true);
+    }
+    
+    public void initGame() {
+        snake = new Snake();
+        food = new Food();
         int deltaTime = ConfigData.getInstance().getDeltaTime();
         if (timer != null && timer.isRunning()){
             timer.stop();
@@ -95,16 +89,8 @@ public class Board extends javax.swing.JPanel {
                 tick();
             }
         });
-        freeze = false;
         timer.start();
-    }
-    
-    private void initMatrix() {
-        matrix = new Node[NUM_ROWS][NUM_COLS];
-        for (int row = 0; row < matrix.length; row++) {
-            for (int col = 0; col < matrix[0].length; col++) {
-            }
-        }
+        timerText.start();
     }
         
     public int getSquareWidth(){
@@ -140,9 +126,9 @@ public class Board extends javax.swing.JPanel {
         for(int row = 0; row < NUM_ROWS; row++){
             for(int col = 0; col < NUM_COLS; col++){
                 if ((row + col) % 2 == 0){
-                    Util.drawSquare(g, row, col, ConfigData.BACKGROUND1, NUM_ROWS, NUM_COLS);
+                    Util.drawSquare(g, row, col, ConfigData.getBackground1(), NUM_ROWS, NUM_COLS);
                 } else {
-                    Util.drawSquare(g, col, row, ConfigData.BACKGROUND2, NUM_ROWS, NUM_COLS);
+                    Util.drawSquare(g, col, row, ConfigData.getBackground2(), NUM_ROWS, NUM_COLS);
                 }
             }
         }
@@ -150,6 +136,7 @@ public class Board extends javax.swing.JPanel {
     
     public void tick() {
         if (snake.isGameOver()){
+            timerText.stop();
             JOptionPane.showMessageDialog(this, "You LOOSE");
             timer.stop();
         } else {
@@ -164,10 +151,18 @@ public class Board extends javax.swing.JPanel {
                 && snake.getHead().getCol()== food.getFood().getCol()){
             food = new Food();
             snake.setNodesToGrow(1);
+            scoreBoard.increment();
         }
     }
-    
-    
+
+    public void setTimerText(TimerText timerText) {
+        this.timerText = timerText;
+    }
+
+    public void setScoreBoard(ScoreBoard scoreBoard) {
+        this.scoreBoard = scoreBoard;
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -176,6 +171,19 @@ public class Board extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setBackground(new java.awt.Color(51, 204, 0));
 
@@ -193,5 +201,6 @@ public class Board extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

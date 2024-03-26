@@ -39,10 +39,10 @@ public class Snake extends javax.swing.JPanel {
         Color color;
         for (Node node : body) {
             if (firstNode) {
-                color = new Color(156, 111, 79);
+                color = ConfigData.getHeadColor();
                 firstNode = false;
             } else {
-                color = new Color(181, 121, 79);
+                color = ConfigData.getBodyColor();
             }
             Util.drawSquare(g, node.getRow(), node.getCol(), color, squareWidth, squareHeight);
         }

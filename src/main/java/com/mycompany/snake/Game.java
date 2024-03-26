@@ -9,13 +9,16 @@ package com.mycompany.snake;
  * @author gmd
  */
 public class Game extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Game
-     */
+        
     public Game() {
         initComponents();
         setLocationRelativeTo(null);
+        ConfigDialog configDialog = new ConfigDialog(this, true);
+        configDialog.setVisible(true);
+        board1.setTimerText(timerText1);
+        board1.setScoreBoard(scoreBoard1);
+        board1.initGame();
+        board1.requestFocus();
     }
 
     /**
@@ -28,29 +31,50 @@ public class Game extends javax.swing.JFrame {
     private void initComponents() {
 
         board1 = new com.mycompany.snake.Board();
+        jToolBar1 = new javax.swing.JToolBar();
+        scoreBoard1 = new com.mycompany.snake.ScoreBoard();
+        timerText1 = new com.mycompany.snake.TimerText();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
 
-        javax.swing.GroupLayout board1Layout = new javax.swing.GroupLayout(board1);
-        board1.setLayout(board1Layout);
-        board1Layout.setHorizontalGroup(
-            board1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        board1Layout.setVerticalGroup(
-            board1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jToolBar1.setBackground(new java.awt.Color(0, 0, 0));
+        jToolBar1.setForeground(new java.awt.Color(0, 0, 0));
+        jToolBar1.setRollover(true);
+        jToolBar1.setBorderPainted(false);
+        jToolBar1.setMinimumSize(new java.awt.Dimension(120, 34));
+        jToolBar1.setName(""); // NOI18N
+        jToolBar1.setPreferredSize(new java.awt.Dimension(120, 34));
+
+        scoreBoard1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        scoreBoard1.setText("Score: 0");
+        scoreBoard1.setMinimumSize(new java.awt.Dimension(120, 30));
+        scoreBoard1.setName(""); // NOI18N
+        scoreBoard1.setPreferredSize(new java.awt.Dimension(220, 30));
+        jToolBar1.add(scoreBoard1);
+
+        timerText1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        timerText1.setText("Time: 00:00");
+        timerText1.setMinimumSize(new java.awt.Dimension(120, 30));
+        timerText1.setPreferredSize(new java.awt.Dimension(220, 30));
+        jToolBar1.add(timerText1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(board1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(board1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(board1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(board1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -93,5 +117,8 @@ public class Game extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.snake.Board board1;
+    private javax.swing.JToolBar jToolBar1;
+    private com.mycompany.snake.ScoreBoard scoreBoard1;
+    private com.mycompany.snake.TimerText timerText1;
     // End of variables declaration//GEN-END:variables
 }
