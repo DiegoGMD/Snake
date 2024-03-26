@@ -34,11 +34,11 @@ public class ConfigDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonOK = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         characterSelector = new javax.swing.JComboBox<>();
         speedSelector = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("SNAKE");
 
         jLabel1.setText("Character");
 
@@ -51,9 +51,6 @@ public class ConfigDialog extends javax.swing.JDialog {
                 jButtonOKActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("SNAKE");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         characterSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grass Snake", "Sand Worm", "Retro Snake", " " }));
         characterSelector.setMinimumSize(new java.awt.Dimension(136, 25));
@@ -91,17 +88,11 @@ public class ConfigDialog extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonOK)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(characterSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -226,7 +217,6 @@ public class ConfigDialog extends javax.swing.JDialog {
     private javax.swing.JButton jButtonOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JComboBox<String> speedSelector;
     // End of variables declaration//GEN-END:variables
 }

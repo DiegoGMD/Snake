@@ -9,7 +9,9 @@ package com.mycompany.snake;
  * @author gmd
  */
 public class Game extends javax.swing.JFrame {
-        
+    
+    private ConfigDialog configDialog;
+    
     public Game() {
         initComponents();
         setLocationRelativeTo(null);
@@ -23,6 +25,7 @@ public class Game extends javax.swing.JFrame {
         board1.setScoreBoard(scoreBoard1);
         board1.initGame();
         board1.requestFocus();
+        pack();
     }
 
     /**
@@ -41,7 +44,12 @@ public class Game extends javax.swing.JFrame {
         timerText1 = new com.mycompany.snake.TimerText();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SNAKE");
         setBackground(new java.awt.Color(0, 0, 0));
+        setBounds(new java.awt.Rectangle(0, 0, 450, 522));
+        setForeground(new java.awt.Color(0, 0, 0));
+        setMinimumSize(new java.awt.Dimension(450, 510));
+        setResizable(false);
 
         jToolBar1.setBackground(new java.awt.Color(0, 0, 0));
         jToolBar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -59,7 +67,7 @@ public class Game extends javax.swing.JFrame {
         jToolBar1.add(scoreBoard1);
 
         jButtonReset.setIcon(new javax.swing.ImageIcon("/home/gmd/NetBeansProjects/Snake-master/src/main/sources/images/restart.png")); // NOI18N
-        jButtonReset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButtonReset.setBorder(null);
         jButtonReset.setFocusable(false);
         jButtonReset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonReset.setIconTextGap(0);
@@ -84,9 +92,9 @@ public class Game extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(board1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(board1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
