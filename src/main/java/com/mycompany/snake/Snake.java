@@ -127,6 +127,16 @@ public class Snake extends javax.swing.JPanel {
         return true;
     }
     
+    public boolean colidesWithSnake(Food food){
+        for (Node node: body){
+            if (node.getRow() == food.getFood().getRow()
+                && node.getCol()== food.getFood().getCol()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public Direction getDirection() {
         return direction;
     }

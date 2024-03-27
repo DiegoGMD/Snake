@@ -4,6 +4,8 @@
  */
 package com.mycompany.snake;
 
+import java.awt.Color;
+
 /**
  *
  * @author gmd
@@ -17,11 +19,13 @@ public class Game extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         ConfigDialog configDialog = new ConfigDialog(this, true);
         configDialog.setVisible(true);
+        jToolBar1.setBackground(Color.black);
         start();
     }
     
     public void start(){
         board1.setTimerText(timerText1);
+        timerText1.reset();
         board1.setScoreBoard(scoreBoard1);
         board1.initGame();
         board1.requestFocus();
@@ -45,30 +49,29 @@ public class Game extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SNAKE");
-        setBackground(new java.awt.Color(0, 0, 0));
         setBounds(new java.awt.Rectangle(0, 0, 450, 522));
-        setForeground(new java.awt.Color(0, 0, 0));
-        setMinimumSize(new java.awt.Dimension(450, 510));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(new java.awt.Color(187, 187, 187));
+        setMinimumSize(new java.awt.Dimension(450, 450));
         setResizable(false);
 
         jToolBar1.setBackground(new java.awt.Color(0, 0, 0));
         jToolBar1.setForeground(new java.awt.Color(255, 255, 255));
-        jToolBar1.setRollover(true);
         jToolBar1.setBorderPainted(false);
         jToolBar1.setMinimumSize(new java.awt.Dimension(120, 34));
         jToolBar1.setName(""); // NOI18N
         jToolBar1.setPreferredSize(new java.awt.Dimension(120, 34));
 
-        scoreBoard1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        scoreBoard1.setBorder(null);
+        scoreBoard1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         scoreBoard1.setText("Score: 0");
         scoreBoard1.setMinimumSize(new java.awt.Dimension(100, 30));
-        scoreBoard1.setName(""); // NOI18N
         scoreBoard1.setPreferredSize(new java.awt.Dimension(200, 30));
         jToolBar1.add(scoreBoard1);
 
+        jButtonReset.setBackground(new java.awt.Color(0, 0, 0));
         jButtonReset.setIcon(new javax.swing.ImageIcon("/home/gmd/NetBeansProjects/Snake-master/src/main/sources/images/restart.png")); // NOI18N
         jButtonReset.setBorder(null);
-        jButtonReset.setFocusable(false);
         jButtonReset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonReset.setIconTextGap(0);
         jButtonReset.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -81,6 +84,9 @@ public class Game extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonReset);
 
+        timerText1.setBackground(new java.awt.Color(0, 0, 0));
+        timerText1.setBorder(null);
+        timerText1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         timerText1.setText("Time: 00:00");
         timerText1.setMinimumSize(new java.awt.Dimension(100, 30));
         timerText1.setPreferredSize(new java.awt.Dimension(200, 30));
@@ -91,7 +97,7 @@ public class Game extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(board1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))

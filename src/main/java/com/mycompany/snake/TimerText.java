@@ -36,7 +36,7 @@ public class TimerText extends JTextField {
                 }
             }
         });
-        setFont(new Font("Press Start 2P", Font.BOLD, 20));
+        setFont(new Font("Oswald", Font.BOLD, 20));
         setBackground(Color.black);
         setForeground(Color.red);
     }

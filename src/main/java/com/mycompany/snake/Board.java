@@ -152,6 +152,9 @@ public class Board extends javax.swing.JPanel {
             food = new Food();
             snake.setNodesToGrow(1);
             scoreBoard.increment();
+            while (snake.colidesWithSnake(food)){
+               food = new Food();
+            }
         }
     }
 
