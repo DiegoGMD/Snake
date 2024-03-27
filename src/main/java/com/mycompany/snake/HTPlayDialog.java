@@ -1,21 +1,21 @@
-package com.mycompany.snake;
-
-import java.awt.Font;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
+package com.mycompany.snake;
+
+import java.awt.Font;
+
 /**
  *
  * @author gmd
  */
-public class AboutDialog extends javax.swing.JDialog {
+public class HTPlayDialog extends javax.swing.JDialog {
 
     /**
-     * Creates new form AboutDialog
+     * Creates new form HTPlayDialog
      */
-    public AboutDialog(java.awt.Frame parent, boolean modal) {
+    public HTPlayDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -27,13 +27,18 @@ public class AboutDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new Font("Oswald", Font.BOLD, 20));
+        jLabel1.setFont(new Font("Oswald", Font.BOLD, 15));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html>This version of"
-                + "<br>the classic game \"Snake\""
-                + "<br><strong>Made by:</strong> Diego Gil Molés"
-                + "<br><strong>Version:</strong> 1.0</html>");
-
+        jLabel1.setText("<html>\n"
+                + "    <h1>How to Play Snake</h1>\n"
+                + "    <ol>\n"
+                + "        <li><strong>Objective:</strong> The objective of Snake is to control a snake and guide it to eat food items on the screen in order to grow.</li>\n"
+                + "        <li><strong>Controls:</strong> You control the snake using arrow keys of your keyboard.</li>\n"
+                + "        <li><strong>Eating Food:</strong> Food items will appear on the game board. And you can grow faster by eating a super food.</li>\n"
+                + "        <li><strong>Game Over:</strong> The game ends if the snake collides with the walls or with its own body.</li>\n"
+                + "        <li><strong>Scoring:</strong> As player's your score will increase depending on how much have you grown.</li>\n"
+                + "    </ol>\n"
+                + "</html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,17 +78,21 @@ public class AboutDialog extends javax.swing.JDialog {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setMaximumSize(new java.awt.Dimension(800, 800));
         jLabel1.setMinimumSize(new java.awt.Dimension(40, 40));
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 800));
+        jLabel1.setPreferredSize(new java.awt.Dimension(400, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,20 +115,20 @@ public class AboutDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AboutDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HTPlayDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AboutDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HTPlayDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AboutDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HTPlayDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AboutDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HTPlayDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AboutDialog dialog = new AboutDialog(new javax.swing.JFrame(), true);
+                HTPlayDialog dialog = new HTPlayDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
