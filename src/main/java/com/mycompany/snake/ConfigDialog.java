@@ -6,6 +6,7 @@ package com.mycompany.snake;
 
 import java.awt.Color;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 
 /**
  *
@@ -201,13 +202,15 @@ public class ConfigDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_speedSelectorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        AboutDialog aboutDialog = new AboutDialog(parent, true);
-//        aboutDialog.setVisible(true);
+        JFrame jFrame = new JFrame();
+        AboutDialog aboutDialog = new AboutDialog(jFrame, true);
+        aboutDialog.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//        HTPlayDialog hTPlayDialog = new HTPlayDialog(parent, true);
-//        hTPlayDialog.setVisible(true);
+        JFrame jFrame = new JFrame();
+        HTPlayDialog hTPlayDialog = new HTPlayDialog(jFrame, true);
+        hTPlayDialog.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

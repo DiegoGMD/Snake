@@ -12,9 +12,6 @@ import java.awt.Font;
  */
 public class AboutDialog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form AboutDialog
-     */
     public AboutDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -54,7 +51,7 @@ public class AboutDialog extends javax.swing.JDialog {
 
         pack();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
