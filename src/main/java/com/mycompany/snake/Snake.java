@@ -47,13 +47,17 @@ public class Snake extends javax.swing.JPanel {
             Util.drawSquare(g, node.getRow(), node.getCol(), color, squareWidth, squareHeight);
         }
     }
-    
+
     public Node getHead() {
         return body.get(0);
     }
-    
+
     public Node getTail() {
         return body.get(body.size() - 1);
+    }
+
+    public List<Node> getBody() {
+        return body;
     }
 
     public int getNodesToGrow() {
@@ -76,67 +80,66 @@ public class Snake extends javax.swing.JPanel {
         Node head = getHead();
         int row = head.getRow();
         int col = head.getCol();
-        switch(direction){
+        switch (direction) {
             case UP:
-                if(canMove (row - 1, col)){
+                if (canMove(row - 1, col)) {
                     body.add(0, new Node(row - 1, col));
                 } else {
                     gameOver = true;
                 }
                 break;
             case DOWN:
-                if(canMove (row + 1, col)){
+                if (canMove(row + 1, col)) {
                     body.add(0, new Node(row + 1, col));
                 } else {
                     gameOver = true;
                 }
                 break;
             case LEFT:
-                if(canMove (row, col - 1)){
+                if (canMove(row, col - 1)) {
                     body.add(0, new Node(row, col - 1));
                 } else {
                     gameOver = true;
                 }
                 break;
             case RIGHT:
-                if(canMove (row, col + 1)){
+                if (canMove(row, col + 1)) {
                     body.add(0, new Node(row, col + 1));
-                }
-                else {
+                } else {
                     gameOver = true;
                 }
                 break;
         }
-        if (nodesToGrow == 0){
+        if (nodesToGrow == 0) {
             body.remove(body.size() - 1);
         } else {
             nodesToGrow -= 1;
         }
     }
-    
+
     public boolean canMove(int row, int col) {
-        if (row < 0 || row >= Board.NUM_ROWS || 
-                col < 0 || col >= Board.NUM_COLS){
+        if (row < 0 || row >= Board.NUM_ROWS
+                || col < 0 || col >= Board.NUM_COLS) {
             return false;
         }
-        for (int i = 1; i < (body.size() - 1); i++){
-            if (body.get(i).getRow() == row && body.get(i).getCol() == col){
+        for (int i = 1; i < (body.size() - 1); i++) {
+            if (body.get(i).getRow() == row && body.get(i).getCol() == col) {
                 return false;
             }
         }
         return true;
     }
-    
-    public boolean colidesWithSnake(Food food){
-        for (Node node: body){
-            if (node.getRow() == food.getFood().getRow()
-                && node.getCol()== food.getFood().getCol()){
-                return true;
-            }
-        }
-        return false;
-    }
-    
+
+//    public boolean colidesWithSnake(Food food) {
+//        for (Node node : body) {
+//            if (node.getRow() == food.getFood().getRow()
+//                    && node.getCol() == food.getFood().getCol()) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
     public Direction getDirection() {
         return direction;
     }

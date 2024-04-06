@@ -88,7 +88,7 @@ public class Board extends javax.swing.JPanel {
 
     public void initGame() {
         snake = new Snake();
-        food = new Food();
+        food = new Food(snake.getBody());
         int deltaTime = ConfigData.getInstance().getDeltaTime();
         if (timer != null && timer.isRunning()) {
             timer.stop();
@@ -162,12 +162,9 @@ public class Board extends javax.swing.JPanel {
     public void checkFood() {
         if (snake.getHead().getRow() == food.getFood().getRow()
                 && snake.getHead().getCol() == food.getFood().getCol()) {
-            food = new Food();
+            food = new Food(snake.getBody());
             snake.setNodesToGrow(1);
             scoreBoard.increment();
-            while (snake.colidesWithSnake(food)) {
-                food = new Food();
-            }
         }
     }
 

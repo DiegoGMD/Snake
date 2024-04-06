@@ -32,7 +32,7 @@ public class AboutDialog extends javax.swing.JDialog {
         jLabel1.setText("<html>This version of"
                 + "<br>the classic game \"Snake\""
                 + "<br><strong>Made by:</strong> Diego Gil Molés"
-                + "<br><strong>Version:</strong> 1.0</html>");
+                + "<br><strong>Version:</strong> Beta</html>");
 
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

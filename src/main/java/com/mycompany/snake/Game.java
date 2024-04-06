@@ -22,6 +22,7 @@ public class Game extends javax.swing.JFrame {
         configDialog.setVisible(true);
         jToolBar1.setBackground(Color.black);
         start();
+        board1.requestFocus();
     }
     
     public void start(){
