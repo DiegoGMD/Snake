@@ -22,8 +22,8 @@ public class ScoreBoard extends JTextField {
         setForeground(Color.red);
     }
 
-    public void increment() {
-        score += 1;
+    public void increment(int points) {
+        score += points;
         displayScore();
     }
 

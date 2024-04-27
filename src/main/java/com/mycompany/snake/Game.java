@@ -61,7 +61,6 @@ public class Game extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(new java.awt.Color(187, 187, 187));
         setMinimumSize(new java.awt.Dimension(450, 450));
-        setPreferredSize(new java.awt.Dimension(450, 480));
         setResizable(false);
 
         jToolBar1.setBackground(new java.awt.Color(0, 0, 0));
@@ -79,7 +78,6 @@ public class Game extends javax.swing.JFrame {
         jToolBar1.add(scoreBoard1);
 
         jButtonReset.setBackground(new java.awt.Color(0, 0, 0));
-        jButtonReset.setIcon(new javax.swing.ImageIcon("/home/gmd/NetBeansProjects/Snake-master/src/main/sources/images/restart.png")); // NOI18N
         jButtonReset.setBorder(null);
         jButtonReset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonReset.setIconTextGap(0);
@@ -103,7 +101,7 @@ public class Game extends javax.swing.JFrame {
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
         board1.setMinimumSize(new java.awt.Dimension(30, 30));
-        board1.setPreferredSize(new java.awt.Dimension(450, 450));
+        board1.setPreferredSize(new java.awt.Dimension(450, 452));
         getContentPane().add(board1, java.awt.BorderLayout.CENTER);
 
         jMenu2.setText("Edit");

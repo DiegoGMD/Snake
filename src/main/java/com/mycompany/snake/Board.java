@@ -31,11 +31,13 @@ public class Board extends javax.swing.JPanel {
     private Graphics g;
     private Snake snake;
     private Food food;
+    private SuperFood superFood;
     private Timer timer;
     private TimerText timerText;
     private ScoreBoard scoreBoard;
     private boolean executingMovement;
     private boolean startGame;
+    private int counterRemainingTime = 0;
 
     class MyKeyAdapter extends KeyAdapter {
 
@@ -121,6 +123,9 @@ public class Board extends javax.swing.JPanel {
         if (food != null) {
             food.paint(g, getSquareWidth(), getSquareHeight());
         }
+        if (superFood != null) {
+            superFood.paint(g, getSquareWidth(), getSquareHeight());
+        }
         getToolkit().getDefaultToolkit().sync();
     }
 
@@ -156,6 +161,7 @@ public class Board extends javax.swing.JPanel {
             executingMovement = false;
             repaint();
             checkFood();
+            checkSuperFood();
         }
     }
 
@@ -164,7 +170,27 @@ public class Board extends javax.swing.JPanel {
                 && snake.getHead().getCol() == food.getFood().getCol()) {
             food = new Food(snake.getBody());
             snake.setNodesToGrow(1);
-            scoreBoard.increment();
+            scoreBoard.increment(1);
+        }
+    }
+
+    public void checkSuperFood() {
+        if (superFood != null) {
+            if (snake.getHead().getRow() == superFood.getSuperFood().getRow()
+                    && snake.getHead().getCol() == superFood.getSuperFood().getCol()) {
+                superFood = null;
+                snake.setNodesToGrow(3);
+                scoreBoard.increment(3);
+            }
+            if (counterRemainingTime == 0) {
+                superFood = null;
+            }
+            counterRemainingTime--;
+        } else {
+            if (Math.random() < 0.01) {
+                superFood = new SuperFood(snake.getBody());
+                counterRemainingTime = (int) (Math.random() * 13 + 3);//numero entre 15 y 3
+            }
         }
     }
 

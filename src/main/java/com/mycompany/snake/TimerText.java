@@ -66,4 +66,8 @@ public class TimerText extends JTextField {
                 + ":" + (seconds < 10 ? "0" : "") + seconds);
     }
 
+    public int getSeconds() {
+        return seconds;
+    }
+    
 }
