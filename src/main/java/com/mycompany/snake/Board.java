@@ -38,7 +38,7 @@ public class Board extends javax.swing.JPanel {
     private boolean executingMovement;
     private boolean startGame;
     private int counterRemainingTime = 0;
-//must be comented
+
     class MyKeyAdapter extends KeyAdapter {
 
         @Override
@@ -187,9 +187,10 @@ public class Board extends javax.swing.JPanel {
             }
             counterRemainingTime--;
         } else {
-            if (Math.random() < 0.01) {
+            if (Math.random() < 0.01) {//El rango de aparición es del 1% por cada tick
                 superFood = new SuperFood(snake.getBody());
                 counterRemainingTime = (int) (Math.random() * 13 + 3);//numero entre 15 y 3
+                //counterRemainingTime es el tiempo que durará superFood en pantalla
             }
         }
     }
