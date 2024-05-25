@@ -60,7 +60,7 @@ public class Game extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(0, 0, 450, 522));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(new java.awt.Color(187, 187, 187));
-        setMinimumSize(new java.awt.Dimension(450, 450));
+        setMinimumSize(new java.awt.Dimension(450, 485));
         setResizable(false);
 
         jToolBar1.setBackground(new java.awt.Color(0, 0, 0));
@@ -99,9 +99,6 @@ public class Game extends javax.swing.JFrame {
         jToolBar1.add(timerText1);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
-
-        board1.setMinimumSize(new java.awt.Dimension(30, 30));
-        board1.setPreferredSize(new java.awt.Dimension(450, 452));
         getContentPane().add(board1, java.awt.BorderLayout.CENTER);
 
         jMenu2.setText("Edit");
