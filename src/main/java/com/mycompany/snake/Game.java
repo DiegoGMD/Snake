@@ -29,6 +29,7 @@ public class Game extends javax.swing.JFrame {
         board1.setTimerText(timerText1);
         timerText1.reset();
         board1.setScoreBoard(scoreBoard1);
+        scoreBoard1.reset();
         board1.initGame();
         board1.requestFocus();
         pack();
@@ -70,14 +71,15 @@ public class Game extends javax.swing.JFrame {
         jToolBar1.setName(""); // NOI18N
         jToolBar1.setPreferredSize(new java.awt.Dimension(120, 35));
 
-        scoreBoard1.setBorder(null);
-        scoreBoard1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         scoreBoard1.setText("Score: 0");
-        scoreBoard1.setMinimumSize(new java.awt.Dimension(100, 30));
+        scoreBoard1.setCaretColor(new java.awt.Color(0, 0, 0));
         scoreBoard1.setPreferredSize(new java.awt.Dimension(200, 30));
         jToolBar1.add(scoreBoard1);
 
         jButtonReset.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonReset.setForeground(new java.awt.Color(255, 0, 51));
+        jButtonReset.setText("R");
+        jButtonReset.setToolTipText("");
         jButtonReset.setBorder(null);
         jButtonReset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonReset.setIconTextGap(0);
@@ -91,10 +93,8 @@ public class Game extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonReset);
 
-        timerText1.setBorder(null);
-        timerText1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         timerText1.setText("Time: 00:00");
-        timerText1.setMinimumSize(new java.awt.Dimension(100, 30));
+        timerText1.setCaretColor(new java.awt.Color(0, 0, 0));
         timerText1.setPreferredSize(new java.awt.Dimension(200, 30));
         jToolBar1.add(timerText1);
 
