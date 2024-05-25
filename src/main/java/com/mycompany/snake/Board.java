@@ -38,7 +38,7 @@ public class Board extends javax.swing.JPanel {
     private boolean executingMovement;
     private boolean startGame;
     private int counterRemainingTime = 0;
-
+//must be comented
     class MyKeyAdapter extends KeyAdapter {
 
         @Override
