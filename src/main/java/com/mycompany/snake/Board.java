@@ -48,12 +48,14 @@ public class Board extends javax.swing.JPanel {
             if (!executingMovement) { // Si no se está ejecutando un movimiento
                 switch (e.getKeyCode()) { // Verifica la tecla presionada
                     case KeyEvent.VK_LEFT:
+                    case KeyEvent.VK_A:
                         if (snake.getDirection() != Direction.RIGHT) { // Si la dirección de la serpiente no es derecha
                             snake.setDirection(Direction.LEFT); // Cambia la dirección a izquierda
                             executingMovement = true; // Marca que se está ejecutando un movimiento
                         }
                         break;
                     case KeyEvent.VK_RIGHT:
+                    case KeyEvent.VK_D:
                         if (snake.getDirection() != Direction.LEFT) {
                             snake.setDirection(Direction.RIGHT);
                             executingMovement = true;
@@ -61,17 +63,25 @@ public class Board extends javax.swing.JPanel {
                         }
                         break;
                     case KeyEvent.VK_UP:
+                    case KeyEvent.VK_W:
                         if (snake.getDirection() != Direction.DOWN) {
                             snake.setDirection(Direction.UP);
                             executingMovement = true;
                         }
                         break;
                     case KeyEvent.VK_DOWN:
+                    case KeyEvent.VK_S:
                         if (snake.getDirection() != Direction.UP) {
                             snake.setDirection(Direction.DOWN);
                             executingMovement = true;
                         }
                         break;
+                    case KeyEvent.VK_R:
+                        timer.restart();// Reinicia el temporizador
+                        timerText.reset();// Reinicia el temporizador
+                        scoreBoard.reset();// Reinicia el marcador
+                        initGame(); // Inicializa el juego en el tablero
+                        requestFocus(); // Solicita el foco para el componente del tablero
                     default:
                         break;
                 }
