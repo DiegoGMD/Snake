@@ -147,15 +147,15 @@ public class ConfigDialog extends javax.swing.JDialog {
         JComboBox comboBox = (JComboBox) evt.getSource();
         String option = (String) comboBox.getSelectedItem();
         switch (option) {
-            case "Grass Snake":
-                ConfigData.setBackground1(new Color(118, 204, 86));
-                ConfigData.setBackground2(new Color(94, 180, 68));
-                ConfigData.setHeadColor(new Color(79, 111, 156));
-                ConfigData.setBodyColor(new Color(79, 121, 181));
-                ConfigData.setFoodColor(Color.red);
-                ConfigData.setSpecialFoodColor(Color.yellow);
+            case "Grass Snake": //Configuración de Grass Snake
+                ConfigData.setBackground1(new Color(118, 204, 86)); // Color primario del tablero
+                ConfigData.setBackground2(new Color(94, 180, 68)); // Color secundario del tablero
+                ConfigData.setHeadColor(new Color(79, 111, 156)); // Color de la cabeza de la serpiente
+                ConfigData.setBodyColor(new Color(79, 121, 181)); // Color del cuerpo de la serpiente
+                ConfigData.setFoodColor(Color.red); // Color de la fruta
+                ConfigData.setSpecialFoodColor(Color.yellow); // Color de la superfruta
                 break;
-            case "Sand Worm":
+            case "Sand Worm": //Configuración de Sand Worm
                 ConfigData.setBackground1(new Color(210, 170, 88));
                 ConfigData.setBackground2(new Color(198, 166, 100));
                 ConfigData.setHeadColor(new Color(156, 111, 79));
@@ -163,7 +163,7 @@ public class ConfigDialog extends javax.swing.JDialog {
                 ConfigData.setFoodColor(Color.red);
                 ConfigData.setSpecialFoodColor(Color.yellow);
                 break;
-            case "Retro Snake":
+            case "Retro Snake": //Configuración de Retro Snake
                 ConfigData.setBackground1(Color.black);
                 ConfigData.setBackground2(Color.black);
                 ConfigData.setHeadColor(Color.yellow);
@@ -189,10 +189,10 @@ public class ConfigDialog extends javax.swing.JDialog {
             case "Fast":
                 ConfigData.getInstance().setDeltaTime(100);
                 break;
-            case "Blue Hedgehog":
+            case "Blue Hedgehog"://Configuración especial
                 ConfigData.getInstance().setDeltaTime(50);
-                ConfigData.setHeadColor(new Color(48,97,227));
-                ConfigData.setBodyColor(new Color(38,247,253));
+                ConfigData.setHeadColor(new Color(48, 97, 227));
+                ConfigData.setBodyColor(new Color(38, 247, 253));
                 ConfigData.setFoodColor(Color.yellow);
                 ConfigData.setSpecialFoodColor(Color.red);
                 break;
@@ -202,13 +202,13 @@ public class ConfigDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_speedSelectorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFrame jFrame = new JFrame();
+        JFrame jFrame = new JFrame(); // Este método crea la ventana About
         AboutDialog aboutDialog = new AboutDialog(jFrame, true);
         aboutDialog.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JFrame jFrame = new JFrame();
+        JFrame jFrame = new JFrame(); // Este método crea la ventana How to play
         HTPlayDialog hTPlayDialog = new HTPlayDialog(jFrame, true);
         hTPlayDialog.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed

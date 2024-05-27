@@ -19,7 +19,7 @@ public class AboutDialog extends javax.swing.JDialog {
         info();
     }
 
-    private void info() {
+    private void info() {//Este método escribe la información que mostrará el botón ABOUT
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -30,7 +30,6 @@ public class AboutDialog extends javax.swing.JDialog {
                 + "<br>the classic game \"Snake\""
                 + "<br><strong>Made by:</strong> Diego Gil Molés"
                 + "<br><strong>Version:</strong> Beta</html>");
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,7 +50,7 @@ public class AboutDialog extends javax.swing.JDialog {
 
         pack();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

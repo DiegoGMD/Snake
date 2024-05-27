@@ -22,7 +22,7 @@ public class HTPlayDialog extends javax.swing.JDialog {
         info();
     }
 
-    private void info() {
+    private void info() {//La informació del How To Play
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);

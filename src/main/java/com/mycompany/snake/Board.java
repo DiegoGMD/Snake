@@ -39,16 +39,18 @@ public class Board extends javax.swing.JPanel {
     private boolean startGame;
     private int counterRemainingTime = 0;
 
+    // Clase que extiende KeyAdapter para jugar con el teclado
     class MyKeyAdapter extends KeyAdapter {
 
+        // Método que se llama cuando se presiona una tecla
         @Override
         public void keyPressed(KeyEvent e) {
-            if (!executingMovement) {
-                switch (e.getKeyCode()) {
+            if (!executingMovement) { // Si no se está ejecutando un movimiento
+                switch (e.getKeyCode()) { // Verifica la tecla presionada
                     case KeyEvent.VK_LEFT:
-                        if (snake.getDirection() != Direction.RIGHT) {
-                            snake.setDirection(Direction.LEFT);
-                            executingMovement = true;
+                        if (snake.getDirection() != Direction.RIGHT) { // Si la dirección de la serpiente no es derecha
+                            snake.setDirection(Direction.LEFT); // Cambia la dirección a izquierda
+                            executingMovement = true; // Marca que se está ejecutando un movimiento
                         }
                         break;
                     case KeyEvent.VK_RIGHT:
@@ -74,35 +76,36 @@ public class Board extends javax.swing.JPanel {
                         break;
                 }
             }
-            repaint();
+            repaint();// Redibuja el componente
         }
     }
+// Constructor de la clase Board
 
     public Board() {
-        initComponents();
-        setLayout(new GridLayout(NUM_ROWS, NUM_COLS));
-        setPreferredSize(new Dimension(NUM_ROWS * 15, NUM_COLS * 15));
-        keyAdapter = new MyKeyAdapter();
-        addKeyListener(keyAdapter);
-        setFocusable(true);
-
+        initComponents(); // Inicializa componentes
+        setLayout(new GridLayout(NUM_ROWS, NUM_COLS)); // Establece el layout del tablero
+        setPreferredSize(new Dimension(NUM_ROWS * 15, NUM_COLS * 15)); // Establece el tamaño preferido del tablero
+        keyAdapter = new MyKeyAdapter(); // Crea una instancia del adaptador de teclado
+        addKeyListener(keyAdapter); // Añade el adaptador de teclado
+        setFocusable(true); // Hace que el tablero sea foco de eventos de teclado
     }
+// Inicializa el juego
 
     public void initGame() {
-        snake = new Snake();
-        food = new Food(snake.getBody());
-        int deltaTime = ConfigData.getInstance().getDeltaTime();
+        snake = new Snake();// Crea una nueva serpiente
+        food = new Food(snake.getBody());// Crea nueva comida basada en la posición de la serpiente
+        int deltaTime = ConfigData.getInstance().getDeltaTime();// Obtiene el tiempo de la configuración
         if (timer != null && timer.isRunning()) {
             timer.stop();
         }
-        timer = new Timer(deltaTime, new ActionListener() {
+        timer = new Timer(deltaTime, new ActionListener() {// Crea un nuevo temporizador
             @Override
             public void actionPerformed(ActionEvent e) {
-                tick();
+                tick();// Llama al método tick en cada tick del temporizador
             }
         });
-        timer.restart();
-        timerText.start();
+        timer.restart(); // Reinicia el temporizador
+        timerText.start(); // Inicia el temporizador del texto
     }
 
     public int getSquareWidth() {
@@ -112,93 +115,101 @@ public class Board extends javax.swing.JPanel {
     public int getSquareHeight() {
         return getHeight() / NUM_ROWS;
     }
+// Método que se llama para pintar el componente
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        paintBackground(g);
+        super.paintComponent(g);// Llama al método de la superclase
+        paintBackground(g);// Pinta el fondo
         if (snake != null) {
-            snake.paint(g, getSquareWidth(), getSquareHeight());
+            snake.paint(g, getSquareWidth(), getSquareHeight());// Pinta la serpiente
         }
         if (food != null) {
-            food.paint(g, getSquareWidth(), getSquareHeight());
+            food.paint(g, getSquareWidth(), getSquareHeight());// Pinta la comida
         }
         if (superFood != null) {
-            superFood.paint(g, getSquareWidth(), getSquareHeight());
+            superFood.paint(g, getSquareWidth(), getSquareHeight());// Pinta la supercomida
         }
-        getToolkit().getDefaultToolkit().sync();
+        getToolkit().getDefaultToolkit().sync();// Sincroniza la actualización de la pantalla
     }
 
+    // Método para pintar el borde del tablero
     public void paintBorder(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.BLACK);
-        BasicStroke bs = new BasicStroke(1);
+        g2d.setColor(Color.BLACK); // Establece el color del borde
+        BasicStroke bs = new BasicStroke(1); // Establece el grosor del borde
         g2d.setStroke(bs);
-        g2d.drawRect(0, 0, NUM_COLS * getSquareWidth() - 2, NUM_ROWS * getSquareHeight() - 2);
-        getToolkit().getDefaultToolkit().sync();
+        g2d.drawRect(0, 0, NUM_COLS * getSquareWidth() - 2, NUM_ROWS * getSquareHeight() - 2); // Dibuja el borde
+        getToolkit().getDefaultToolkit().sync(); // Sincroniza la actualización de la pantalla
     }
 
+    // Método para pintar el fondo del tablero
     public void paintBackground(Graphics g) {
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int col = 0; col < NUM_COLS; col++) {
                 if ((row + col) % 2 == 0) {
-                    Util.drawSquare(g, row, col, ConfigData.getBackground1(), getSquareWidth(), getSquareHeight());
+                    /* Para pintar en posiciones alternas */
+                    Util.drawSquare(g, row, col, ConfigData.getBackground1(), getSquareWidth(), getSquareHeight()); // Pinta el fondo con el color principal
                 } else {
-                    Util.drawSquare(g, col, row, ConfigData.getBackground2(), getSquareWidth(), getSquareHeight());
+                    Util.drawSquare(g, col, row, ConfigData.getBackground2(), getSquareWidth(), getSquareHeight()); // Pinta el fondo con el color secundario
                 }
             }
         }
-        getToolkit().getDefaultToolkit().sync();
+        getToolkit().getDefaultToolkit().sync(); // Sincroniza la actualización de la pantalla
     }
+// Método para pintar el borde del tablero
 
     public void tick() {
         if (snake.isGameOver()) {
-            timerText.stop();
-            JOptionPane.showMessageDialog(null, "You LOOSE", "GAME OVER", JOptionPane.ERROR_MESSAGE);
-            timer.stop();
+            timerText.stop(); // Detén el texto del tiempo (el que se muestra en pantalla)
+            JOptionPane.showMessageDialog(null, "You LOOSE", "GAME OVER", JOptionPane.ERROR_MESSAGE); // Muestra un mensaje de fin de juego
+            timer.stop(); // Detén el temporizador
         } else {
-            snake.moveSnake();
-            executingMovement = false;
-            repaint();
-            checkFood();
-            checkSuperFood();
+            snake.moveSnake(); // Mueve la serpiente
+            executingMovement = false; // Booleano para indicar q no se está haciendo ningún movimiento
+            repaint(); // Redibuja el componente
+            checkFood(); // Verifica si la serpiente ha comido
+            checkSuperFood(); // Verifica si la serpiente ha comido supercomida
         }
     }
 
+// Verifica si la serpiente ha comido comida
     public void checkFood() {
-        if (snake.getHead().getRow() == food.getFood().getRow()
+        if (snake.getHead().getRow() == food.getFood().getRow() // Si la cabeza de la serpiente está en la misma posición que la comida
                 && snake.getHead().getCol() == food.getFood().getCol()) {
-            food = new Food(snake.getBody());
-            snake.setNodesToGrow(1);
-            scoreBoard.increment(1);
+            food = new Food(snake.getBody()); // Crea nueva comida
+            snake.setNodesToGrow(1); // Crece la serpiente en un nodo
+            scoreBoard.increment(1); // Incrementa el marcador en 1 punto
         }
     }
 
+    // Verifica si la serpiente ha comido supercomida
     public void checkSuperFood() {
         if (superFood != null) {
-            if (snake.getHead().getRow() == superFood.getSuperFood().getRow()
+            if (snake.getHead().getRow() == superFood.getSuperFood().getRow() // Si la cabeza de la serpiente está en la misma posición que la supercomida
                     && snake.getHead().getCol() == superFood.getSuperFood().getCol()) {
-                superFood = null;
-                snake.setNodesToGrow(3);
-                scoreBoard.increment(3);
+                superFood = null; // Elimina la supercomida
+                snake.setNodesToGrow(3); // Crece la serpiente en tres nodos
+                scoreBoard.increment(3); // Incrementa el marcador en 3 puntos
             }
             if (counterRemainingTime == 0) {
-                superFood = null;
+                superFood = null; // Elimina la supercomida
             }
-            counterRemainingTime--;
+            counterRemainingTime--; // Decrementa el contador de tiempo restante para desaparecer
         } else {
-            if (Math.random() < 0.01) {//El rango de aparición es del 1% por cada tick
+            if (Math.random() < 0.01) { // Probabilidad de 1% de que aparezca supercomida
                 superFood = new SuperFood(snake.getBody());
-                counterRemainingTime = (int) (Math.random() * 13 + 3);//numero entre 15 y 3
-                //counterRemainingTime es el tiempo que durará superFood en pantalla
+                counterRemainingTime = (int) (Math.random() * 13 + 3); // Establece el tiempo de duración de la supercomida entre 3 y 15
             }
         }
     }
 
+// Establece el temporizador del texto
     public void setTimerText(TimerText timerText) {
         this.timerText = timerText;
     }
 
+// Establece el marcador
     public void setScoreBoard(ScoreBoard scoreBoard) {
         this.scoreBoard = scoreBoard;
     }

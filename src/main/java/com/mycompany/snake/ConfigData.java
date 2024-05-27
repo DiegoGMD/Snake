@@ -11,19 +11,19 @@ import java.awt.Color;
  * @author gmd
  */
 public class ConfigData {
-   
-    public static  Color headColor = new Color(0);
-    public static  Color bodyColor = new Color(0);
-    public static  Color background1 = new Color(0);
-    public static  Color background2 = new Color(0);
-    public static  Color foodColor = new Color(0);
-    public static  Color specialFoodColor = new Color(0);
+
+    public static Color headColor = new Color(0);
+    public static Color bodyColor = new Color(0);
+    public static Color background1 = new Color(0);
+    public static Color background2 = new Color(0);
+    public static Color foodColor = new Color(0);
+    public static Color specialFoodColor = new Color(0);
     private static ConfigData configData = new ConfigData();
     private int deltaTime;
     private int score;
-    
-    private ConfigData(){
-        deltaTime = 250;
+
+    private ConfigData() {
+        deltaTime = 250;// Configuración default
         headColor = new Color(79, 111, 156);
         bodyColor = new Color(79, 121, 181);
         background1 = new Color(118, 204, 86);
@@ -47,8 +47,8 @@ public class ConfigData {
     public void setScore(int score) {
         this.score = score;
     }
-    
-    public static ConfigData getInstance(){
+
+    public static ConfigData getInstance() {
         return configData;
     }
 
@@ -99,6 +99,5 @@ public class ConfigData {
     public static void setSpecialFoodColor(Color specialFoodColor) {
         ConfigData.specialFoodColor = specialFoodColor;
     }
-    
-    
+
 }

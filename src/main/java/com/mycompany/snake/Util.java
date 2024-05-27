@@ -14,19 +14,20 @@ import java.awt.Graphics;
 public class Util {
 
     public static void drawSquare(Graphics g, int row, int col, Color color, int squareWidth, int squareHeight) {
-        int x = col * squareWidth;
-        int y = row * squareHeight;
-        g.setColor(color);
-        g.fillRect(x + 1, y + 1, squareWidth - 2, squareHeight - 2);
-        g.setColor(color.brighter());
-        g.drawLine(x, y + squareHeight - 1, x, y);
-        g.drawLine(x, y, x + squareWidth - 1, y);
-        g.setColor(color.darker());
-        g.drawLine(x + 1, y + squareHeight - 1, x + squareWidth - 1, y + squareHeight - 1);
-        g.drawLine(x + squareWidth - 1, y + squareHeight - 1, x + squareWidth - 1, y + 1);
+        int x = col * squareWidth; // Calcular la posición x en el tablero
+        int y = row * squareHeight; // Calcular la posición y en el tablero
+        g.setColor(color);// Establecer el color del gráfico
+        g.fillRect(x + 1, y + 1, squareWidth - 2, squareHeight - 2);// Dibujar el relleno del cuadrado
+        g.setColor(color.brighter());// Establecer un color más brillante para los bordes superiores e izquierdos
+        g.drawLine(x, y + squareHeight - 1, x, y);// Dibujar la línea superior del borde
+        g.drawLine(x, y, x + squareWidth - 1, y);// Dibujar la línea izquierda del borde
+        g.setColor(color.darker());// Establecer un color más oscuro para los bordes inferiores y derechos
+        g.drawLine(x + 1, y + squareHeight - 1, x + squareWidth - 1, y + squareHeight - 1);// Dibujar la línea inferior del borde
+        g.drawLine(x + squareWidth - 1, y + squareHeight - 1, x + squareWidth - 1, y + 1);// Dibujar la línea derecha del borde
     }
-    
+
     public static int generateRandom(int number) {
+        // Generar un número aleatorio entre 1 y el valor de number (inclusive)
         return (int) (Math.random() * number + 1);
     }
 }

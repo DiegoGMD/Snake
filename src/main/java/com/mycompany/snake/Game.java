@@ -12,27 +12,28 @@ import javax.swing.JDialog;
  * @author gmd
  */
 public class Game extends javax.swing.JFrame {
-    
+
     private ConfigDialog configDialog;
-    
+
     public Game() {
         initComponents();
-        setLocationRelativeTo(null);
-        ConfigDialog configDialog = new ConfigDialog(this, true);
+        setLocationRelativeTo(null); // Centra la ventana en la pantalla
+        ConfigDialog configDialog = new ConfigDialog(this, true); // Crea un nuevo configDialog
         configDialog.setVisible(true);
-        jToolBar1.setBackground(Color.black);
-        start();
-        board1.requestFocus();
+        jToolBar1.setBackground(Color.black); // Establece el color de fondo
+        start(); // Inicia el juego
+        board1.requestFocus(); // Solicita el foco para el componente del tablero
     }
-    
-    public void start(){
-        board1.setTimerText(timerText1);
-        timerText1.reset();
-        board1.setScoreBoard(scoreBoard1);
-        scoreBoard1.reset();
-        board1.initGame();
-        board1.requestFocus();
-        pack();
+
+    // Método para iniciar el juego
+    public void start() {
+        board1.setTimerText(timerText1); // Establece el temporizador de texto en el tablero
+        board1.setScoreBoard(scoreBoard1); // Establece el marcador en el tablero
+        timerText1.reset(); // Resetea el temporizador de texto
+        scoreBoard1.reset(); // Resetea el marcador de texto
+        board1.initGame(); // Inicializa el juego en el tablero
+        board1.requestFocus(); // Solicita el foco para el componente del tablero
+        pack(); // Ajusta el tamaño de la ventana para que se ajuste a sus componentes
     }
 
     /**
@@ -139,23 +140,23 @@ public class Game extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetActionPerformed
-        start();
+        start();// Reinicia el juego
     }//GEN-LAST:event_jButtonResetActionPerformed
 
     private void jMenuItemConfigurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigurationActionPerformed
-        ConfigDialog configDialog = new ConfigDialog(this, true);
-        configDialog.setVisible(true);
-        start();
+        ConfigDialog configDialog = new ConfigDialog(this, true);// Crea un nuevo diálogo de configuración
+        configDialog.setVisible(true);// Muestra el diálogo de configuración
+        start();// Reinicia el juego después de la configuración
     }//GEN-LAST:event_jMenuItemConfigurationActionPerformed
 
     private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
-        AboutDialog aboutDialog = new AboutDialog(this, true);
-        aboutDialog.setVisible(true);
+        AboutDialog aboutDialog = new AboutDialog(this, true);// Crea un nuevo diálogo de información
+        aboutDialog.setVisible(true);// Muestra el diálogo de información
     }//GEN-LAST:event_jMenuItemAboutActionPerformed
 
     private void jMenuItemHTPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHTPlayActionPerformed
-        HTPlayDialog hTPlayDialog = new HTPlayDialog(this, true);
-        hTPlayDialog.setVisible(true);
+        HTPlayDialog hTPlayDialog = new HTPlayDialog(this, true);// Crea un nuevo diálogo de "Cómo jugar"
+        hTPlayDialog.setVisible(true);// Muestra el diálogo de "Cómo jugar"
     }//GEN-LAST:event_jMenuItemHTPlayActionPerformed
 
     /**

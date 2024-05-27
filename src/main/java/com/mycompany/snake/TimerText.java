@@ -24,20 +24,26 @@ public class TimerText extends JTextField {
     public TimerText() {
         seconds = 0;
         minutes = 0;
+
+        // Crear un nuevo temporizador que se ejecuta cada 1000 milisegundos (1 segundo)
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                displayTime();
-                if (seconds == 59) {
-                    minutes++;
-                    seconds = 0;
+                displayTime(); // Actualizar la visualización del tiempo
+                if (seconds == 59) { // Si los segundos llegan a 59
+                    minutes++; // Incrementar los minutos
+                    seconds = 0; // Reiniciar los segundos a 0
                 } else {
-                    seconds++;
+                    seconds++; // Incrementar los segundos
                 }
             }
         });
+
+        // Configurar la fuente del texto del temporizador
         setFont(new Font("Oswald", Font.BOLD, 20));
+        // Configurar el color de fondo del temporizador
         setBackground(Color.black);
+        // Configurar el color del texto del temporizador
         setForeground(Color.red);
     }
 
@@ -61,7 +67,9 @@ public class TimerText extends JTextField {
         displayTime();
     }
 
+    // Método para actualizar y mostrar el tiempo transcurrido
     private void displayTime() {
+        // Establecer el texto del temporizador con el formato "Time: MM:SS"
         setText("Time: " + (minutes < 10 ? "0" : "") + minutes
                 + ":" + (seconds < 10 ? "0" : "") + seconds);
     }
@@ -69,5 +77,5 @@ public class TimerText extends JTextField {
     public int getSeconds() {
         return seconds;
     }
-    
+
 }
